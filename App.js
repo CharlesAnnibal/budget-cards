@@ -9,7 +9,7 @@ import NewBudget from './screens/budget/New.screen';
 
 const MainNavigator = createStackNavigator({
   Home: {screen: HomeScreen},
-  Profile: {screen: NewBudget},
+  NewBudget: {screen: NewBudget},
 });
 
 const App = createAppContainer(MainNavigator);

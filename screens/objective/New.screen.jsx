@@ -7,7 +7,7 @@ export default class NewBudget extends Component {
     }
 
     static navigationOptions = {
-        title: 'New budget',
+        title: 'New objective',
     };
 
 

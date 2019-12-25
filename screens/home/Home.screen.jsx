@@ -42,19 +42,18 @@ export default class Home extends Component {
         
                 <Footer>
                     <FooterTab>
-                        <Button>
-                            <Text>Apps</Text>
-                        </Button>
-                        <Button>
-                            <Text>Camera</Text>
-                        </Button>
-                        <Button active>
-                            <Text>Navigate</Text>
-                        </Button>
                         <Button
                                 title="Go to Jane's profile"
-                                onPress={() => navigate('Profile', {name: 'Jane'})}
-                            ><Text>Link</Text></Button>
+                                onPress={() => navigate('NewBudget', {name: 'Jane'})}
+                            ><Text>New Budget</Text></Button>
+                            <Button
+                                title="Go to Jane's profile"
+                                onPress={() => navigate('NewBudget', {name: 'Jane'})}
+                            ><Text>New Objective</Text></Button>
+                            <Button
+                                title="Go to Jane's profile"
+                                onPress={() => navigate('NewBudget', {name: 'Jane'})}
+                            ><Text>About</Text></Button>
                     </FooterTab>
                 </Footer>
             </Container>
