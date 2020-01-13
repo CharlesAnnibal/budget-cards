@@ -6,10 +6,12 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 import HomeScreen from './screens/home/Home.screen';
 import NewBudget from './screens/budget/New.screen';
+import EditBudget from './screens/budget/Edit.screen';
 
 const MainNavigator = createStackNavigator({
   Home: {screen: HomeScreen},
   NewBudget: {screen: NewBudget},
+  EditBudget: {screen: EditBudget}
 });
 
 const App = createAppContainer(MainNavigator);

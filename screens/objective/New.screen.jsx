@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Form, Item, Input, Button, Text } from 'native-base';
 
-export default class NewBudget extends Component {
+export default class NewObjective extends Component {
     constructor() {
         super();
     }

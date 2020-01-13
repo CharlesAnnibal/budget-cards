@@ -4,6 +4,14 @@ import { Container, Header, Content, Form, Item, Input, Button, Text } from 'nat
 export default class NewBudget extends Component {
     constructor() {
         super();
+
+        this.state = {
+            amount:"",
+            description:"",
+            color:"",
+            dateStart:"",
+            dateEnd:""
+        }
     }
 
     static navigationOptions = {

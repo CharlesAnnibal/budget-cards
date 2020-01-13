@@ -20,7 +20,7 @@ export default class BudgetCard extends Component {
 
   render() {
     return (
-      <View style={this.state.styles.card}>
+      <View style={this.state.styles.card} onPress={() => navigate('EditBudget', {name: 'Jane'})}>
         <Grid style={this.state.styles.grid}>
         <Row size={1} style={this.state.styles.colorIdentifier}></Row>
           <Row size={1} style={this.state.styles.colorIdentifier}></Row>
