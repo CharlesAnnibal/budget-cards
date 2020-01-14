@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native'
 import { Grid, Row, Col } from 'react-native-easy-grid'
+
 
 
 export default class BudgetCard extends Component {
@@ -10,28 +11,30 @@ export default class BudgetCard extends Component {
     this.state = {
       description: props.description,
       valueUtilized: props.valueUtilized,
-      styles: this.styles(props.color)
+      styles: this.styles(props.color),
+      navigate: props.navigate
     }
   }
 
-  componentDidMount() {
-
+  _onPressButton() {
+    console.log(this.state.navigate)
+    this.state.navigate.navigate('EditBudget', {name: 'Jane'})
   }
+
 
   render() {
     return (
-      <View style={this.state.styles.card} onPress={() => navigate('EditBudget', {name: 'Jane'})}>
-        <Grid style={this.state.styles.grid}>
-        <Row size={1} style={this.state.styles.colorIdentifier}></Row>
+        <TouchableHighlight onPress={() => this._onPressButton()} style={this.state.styles.card}>
+          <Grid style={this.state.styles.grid}>
           <Row size={1} style={this.state.styles.colorIdentifier}></Row>
-          <Row size={4} >
-            <Col style={this.state.styles.center}><Text style={this.state.styles.text}>{this.state.description}</Text></Col>
-            <Col  style={this.state.styles.center}><Text style={this.state.styles.text}>{this.state.valueUtilized}</Text></Col>
-          </Row>
-          <Row size={4}  style={this.state.styles.center}><Text style={this.state.styles.text}>{this.state.valueUtilized}</Text></Row>
-        </Grid>
-
-      </View>
+            <Row size={1} style={this.state.styles.colorIdentifier}></Row>
+            <Row size={4} >
+              <Col style={this.state.styles.center}><Text style={this.state.styles.text}>{this.state.description}</Text></Col>
+              <Col  style={this.state.styles.center}><Text style={this.state.styles.text}>{this.state.valueUtilized}</Text></Col>
+            </Row>
+            <Row size={4}  style={this.state.styles.center}><Text style={this.state.styles.text}>{this.state.valueUtilized}</Text></Row>
+          </Grid>
+        </TouchableHighlight>
     );
   }
 

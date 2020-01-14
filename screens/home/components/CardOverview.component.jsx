@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Grid, Col} from 'react-native-easy-grid'
-import { Container, Header, Content, Card, CardItem, Text, Body } from "native-base";
+import { Container, Header, Content, Card, CardItem, Text, Body, Button } from "native-base";
 import { StyleSheet, ScrollView, View } from 'react-native';
 
 export default class CardOverview extends Component{
@@ -16,7 +16,13 @@ export default class CardOverview extends Component{
                   <Grid>
                     <Col size={3} style={styles.overviewLeft}><Text>150,00</Text></Col>
                     <Col size={4} style={styles.overviewCenter}><Text>15,00</Text></Col>
-                    <Col size={3} style={styles.overviewRight}><Text>15/12/2019</Text></Col>
+                    <Col size={3} style={styles.overviewRight}>
+                      <Button
+                          title="Go to Jane's profile"
+                          onPress={() => navigate('EditBudget', {name: 'Jane'})}>
+                            {/*<Text>New Budget</Text>*/}
+                      </Button>
+                      <Text>15/12/2019</Text></Col>
                   </Grid>
                 </Body>
               </CardItem>

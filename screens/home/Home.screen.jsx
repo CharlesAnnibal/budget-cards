@@ -16,6 +16,18 @@ export default class Home extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
+
+        const listBudgetCards = budgetsList.map((budget) =>
+            <BudgetCard  
+                value={budget.value} 
+                key={budget.id} 
+                description={budget.description}
+                color={budget.color}  
+                valueUtilized={budget.valueUtilized}
+                navigate={this.props.navigation}
+                />
+        );
+
         return (
             <Container>
                 <Header />
@@ -133,12 +145,3 @@ const budgetsList = [
         valueUtilized:10
     }
 ];
-
-const listBudgetCards = budgetsList.map((budget) =>
-    <BudgetCard  
-        value={budget.value} 
-        key={budget.id} 
-        description={budget.description}
-        color={budget.color}  
-        valueUtilized={budget.valueUtilized} />
-);
