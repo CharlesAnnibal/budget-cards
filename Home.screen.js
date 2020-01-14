@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-native-easy-grid'
+//import { Grid, Row, Col } from 'react-native-easy-grid'
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
-import CardOverview from './components/CardOverview.component.jsx'
-import BudgetCard from '../../components/BudgetCard.component.jsx';
+import CardOverview from './components/CardOverview.component.'
+import BudgetCard from '../../components/BudgetCard.component';
 import { Container, Header, Content, Footer, FooterTab, Button } from 'native-base';
 
 export default class Home extends Component {
