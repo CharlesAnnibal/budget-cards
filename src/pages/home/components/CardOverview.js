@@ -14,15 +14,14 @@ export default class CardOverview extends Component{
               <CardItem bordered style={styles.body}>
                 <Body>
                   <Grid>
-                    <Col size={3} style={styles.overviewLeft}><Text>150,00</Text></Col>
-                    <Col size={4} style={styles.overviewCenter}><Text>15,00</Text></Col>
+                    <Col size={3} style={styles.overviewLeft}>
+                        <Text style={styles.overviewText}>150,00</Text>
+                    </Col>
+                    <Col size={4} style={styles.overviewCenter}>
+                        <Text style={styles.overviewText}>15,00</Text>
+                    </Col>
                     <Col size={3} style={styles.overviewRight}>
-                      <Button
-                          title="Go to Jane's profile"
-                          onPress={() => navigate('EditBudget', {name: 'Jane'})}>
-                            {/*<Text>New Budget</Text>*/}
-                      </Button>
-                      <Text>15/12/2019</Text></Col>
+                      <Text style={styles.overviewText}>15/12/2019</Text></Col>
                   </Grid>
                 </Body>
               </CardItem>
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
     marginTop:"10%",
   },
   body:{
-    backgroundColor: '#5b96f5',
+    backgroundColor: '#114acf',
     height:"100%"
   },
   overviewLeft:{
@@ -49,10 +48,12 @@ const styles = StyleSheet.create({
   overviewCenter:{
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'olive',
   },
   overviewRight:{
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  overviewText:{
+    color:"#fff",
   }
 });

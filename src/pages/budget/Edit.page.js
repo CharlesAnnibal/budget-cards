@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Form, Item, Input, Button, Text } from 'native-base';
 
-export default class NewObjective extends Component {
+export default class EditBudget extends Component {
     constructor() {
         super();
+
+        this.state = {
+            amount:"",
+            description:"",
+            color:"",
+            dateStart:"",
+            dateEnd:""
+        }
     }
 
     static navigationOptions = {
-        title: 'New objective',
+        title: 'Edit budget',
+        headerStyle: {
+            backgroundColor: '#114acf',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold'
+        },
     };
 
 
@@ -15,7 +30,6 @@ export default class NewObjective extends Component {
         const {navigate} = this.props.navigation;
         return (
             <Container>
-                <Header />
                 <Content>
                     <Form>
                         <Item>
