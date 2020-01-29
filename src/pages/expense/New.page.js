@@ -4,6 +4,7 @@ import { Container, Header, Content, Form, Item, Input, Button, Text, DatePicker
 import AsyncStorage from '@react-native-community/async-storage';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import ExpenseStorage from '../../containers/storage/ExpenseStorageContainer'
+import Storage from '../../containers/storage/StorageContainer'
 
 export default class NewExpense extends Component {
     constructor() {
@@ -30,7 +31,7 @@ export default class NewExpense extends Component {
             expense: objNewExpense
         }, async () => {
             try {
-                ExpenseStorage.createExpense(this.state.expense);
+                Storage.create(this.state.expense, 'expense');
             } catch (e) {
                 console.log(e);
             }

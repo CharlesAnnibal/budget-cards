@@ -7,6 +7,7 @@ import CardOverview from './components/CardOverview';
 import BudgetCard from '../../components/BudgetCard.component';
 import { Container, Header, Content, Footer, FooterTab, Button } from 'native-base';
 import styles from './Home.style'
+import Storage from '../../containers/storage/StorageContainer';
 
 export default class Home extends Component {
     static navigationOptions = {
@@ -30,28 +31,12 @@ export default class Home extends Component {
     componentDidMount() {
         this.focusListener = this.props.navigation.addListener('didFocus', () => {
             try {
-                AsyncStorage.getAllKeys().then(arrayKeys => {
-                    let arrayPromisesBudgets = arrayKeys.map(key => {
-                        console.log("key",key)
-                        let entity = key.split("@")[0];
-                        if(entity === "budget"){
-                            return AsyncStorage.getItem(key).then(budget => {
-                                return budget
-                            })
-                        }
+                Storage.listAll('budget',(filteredResults)=>{
+                    console.log("PO MANO",filteredResults)
+                    this.setState({
+                        budgetList: filteredResults
                     })
-
-                    Promise.all(arrayPromisesBudgets).then(results => {
-                        
-                        let filteredResults = results.filter(objBudget => {
-                            return objBudget !== undefined;
-                        })
-                        console.log("PO MANO",filteredResults)
-                        this.setState({
-                            budgetList: filteredResults
-                        })
-                    })
-                });
+                })
             } catch (e) {
                
             }

@@ -4,6 +4,7 @@ import { Container, Header, Content, Form, Item, Input, Button, Text, DatePicker
 import AsyncStorage from '@react-native-community/async-storage';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import BudgetStorage from '../../containers/storage/BudgetStorageContainer'
+import Storage from '../../containers/storage/StorageContainer'
 
 export default class NewBudget extends Component {
     constructor() {
@@ -42,7 +43,7 @@ export default class NewBudget extends Component {
             budget: objNewBudget
         }, async () => {
             try {
-                BudgetStorage.createBudget(this.state.budget);
+                Storage.create(this.state.budget, 'budget');
             } catch (e) {
                 console.log(e);
             }
