@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import CardOverview from './components/CardOverview';
 import BudgetCard from '../../components/BudgetCard.component';
 import { Container, Header, Content, Footer, FooterTab, Button } from 'native-base';
+import styles from './Home.style'
 
 export default class Home extends Component {
     static navigationOptions = {
@@ -21,47 +22,57 @@ export default class Home extends Component {
 
     constructor() {
         super();
-
         this.state = {
-            budgetList:[]
+            budgetList: [],
         }
     }
 
-    componentDidMount(){
-        try{
-            AsyncStorage.getAllKeys().then(arrayKeys =>   {
-                //console.log("ou",arrayKeys)
-                let arrayBudgets = arrayKeys.map(key=>{
-                    return AsyncStorage.getItem(key).then(budget=>{
-                        return budget
+    componentDidMount() {
+        this.focusListener = this.props.navigation.addListener('didFocus', () => {
+            try {
+                AsyncStorage.getAllKeys().then(arrayKeys => {
+                    let arrayPromisesBudgets = arrayKeys.map(key => {
+                        console.log("key",key)
+                        let entity = key.split("@")[0];
+                        if(entity === "budget"){
+                            return AsyncStorage.getItem(key).then(budget => {
+                                return budget
+                            })
+                        }
                     })
-                })
-                Promise.all(arrayBudgets).then(results=>{
-                    this.setState({
-                        budgetList:results
-                    })
-                })
-                
-                /*this.setState({budgetList:r},()=>{
-                    console.log("PAPAPA",this.state)
-                })*/
-            });
-        }catch(e){
 
-        }
+                    Promise.all(arrayPromisesBudgets).then(results => {
+                        
+                        let filteredResults = results.filter(objBudget => {
+                            return objBudget !== undefined;
+                        })
+                        console.log("PO MANO",filteredResults)
+                        this.setState({
+                            budgetList: filteredResults
+                        })
+                    })
+                });
+            } catch (e) {
+               
+            }
+        });
+
+    }
+
+    componentWillUnmount() {
+        // Remove the event listener
+        this.focusListener.remove();
     }
 
     render() {
         const { navigate } = this.props.navigation;
 
-        const listBudgetCards = this.state.budgetList.map((jsonBudget, key) =>{
+        const listBudgetCards = this.state.budgetList.map((jsonBudget, key) => {
             let objBudget = JSON.parse(jsonBudget);
             objBudget.amount = isNaN(objBudget.amount) ? parseFloat(objBudget.amount) : objBudget.amount
-            console.log("RENDER HOME - "+objBudget.amount,objBudget)
-
             let percent = 40 / objBudget.amount;
 
-            return(
+            return (
                 <BudgetCard
                     value={objBudget.amount}
                     key={key}
@@ -71,9 +82,8 @@ export default class Home extends Component {
                     navigate={this.props.navigation}
                 />
             )
-        }
-            
-        );
+        });
+
 
         return (
             <Container>
@@ -95,7 +105,7 @@ export default class Home extends Component {
                                         <Text>Nenhum registo ainda</Text>
                                     ) : (listBudgetCards)
                                 }
-                                
+
                             </View>
 
                         </ScrollView>
@@ -124,31 +134,8 @@ export default class Home extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    topContainer: {
-        backgroundColor: '#fff',
-        justifyContent: "center"
-    },
-    otherContainer: {
-        backgroundColor: '#114acf',
-    },
 
-    budgetCardsScrollView: {
-        backgroundColor: '#fff',
-        width: '100%'
-    },
-    BudgetCardContainer: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        flexDirection: 'row'
-    },
-    footer: {
-        backgroundColor: '#114acf',
-    },
-    footerText: {
-        color: "#fff"
-    }
-});
+
 
 const budgetsList = [
     {
