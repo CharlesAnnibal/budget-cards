@@ -3,8 +3,8 @@ import Alert from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Button, Text, DatePicker } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import BudgetStorage from '../../containers/storage/BudgetStorageContainer'
-import Storage from '../../containers/storage/StorageContainer'
+import { storageObject }  from '../../containers/storage/StorageContainer';
+import { budgetClassObject } from '../../containers/storage/BudgetStorageContainer';
 
 export default class NewBudget extends Component {
     constructor() {
@@ -43,7 +43,7 @@ export default class NewBudget extends Component {
             budget: objNewBudget
         }, async () => {
             try {
-                Storage.create(this.state.budget, 'budget');
+                storageObject.create(this.state.budget, 'budget');
             } catch (e) {
                 console.log(e);
             }

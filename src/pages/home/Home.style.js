@@ -14,7 +14,7 @@ export default StyleSheet.create({
             backgroundColor: '#fff',
             width: '100%'
         },
-        BudgetCardContainer: {
+        BudgetListContainer: {
             display: 'flex',
             flexWrap: 'wrap',
             flexDirection: 'row'
