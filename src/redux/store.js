@@ -4,5 +4,23 @@ import rootReducer from "./reducers/root.reducer";
 //import BudgetReducer from  "./reducers/Budget.reducer"
 
 const middlewares = [logger];
-const store = createStore(rootReducer, applyMiddleware(...middlewares));
+
+function reducerTeste(){
+    return [
+            {
+                nome:"teste1",
+                "amount":"100"
+            },
+            {
+                nome:"teste2",
+                "amount":"100"
+            },
+            {
+                nome:"teste3",
+                "amount":"100"
+            },
+     
+    ]
+}
+const store = createStore(reducerTeste);
 export default store;

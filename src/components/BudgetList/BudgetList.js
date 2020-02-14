@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import BudgetCard from '../../../components/BudgetCard.component';
+import BudgetCard from '../BudgetCard/BudgetCard.component';
 
 
 export default class BudgetListContainer extends Component{

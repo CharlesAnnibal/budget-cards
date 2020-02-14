@@ -1,4 +1,16 @@
 import { combineReducers } from "redux";
 import budgetReducer from "./Budget.reducer";
 
-export default combineReducers({ budget:budgetReducer });
+
+function reducerTeste(){
+    return [
+        {
+            budget:{
+                nome:"teste1",
+                "amount":"100"
+            }
+        }
+    ]
+}
+
+export default combineReducers(reducerTeste);

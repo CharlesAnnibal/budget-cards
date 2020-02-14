@@ -38,7 +38,7 @@ export class StorageContainer {
 
     listAll = async (entity, callback) => {
         AsyncStorage.getAllKeys().then(arrayKeys => {
-            console.log("arraykeys", arrayKeys);
+            console.log("arraykeyss", arrayKeys);
             let filteredKeys = arrayKeys.filter(key => {
                 let keyEntity = key.split("@")[0];
                 if (keyEntity === entity) {
@@ -48,7 +48,7 @@ export class StorageContainer {
             console.log("filteredkeys", arrayKeys);
             async (arrayKeys) => {
                 values = await AsyncStorage.multiGet(arrayKeys)
-                console.log("oooo", values);
+                console.log("ooooo", values);
                 callback(values)
             }
 

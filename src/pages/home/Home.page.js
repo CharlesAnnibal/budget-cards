@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-native-easy-grid'
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 
 import CardOverview from './components/CardOverview';
-import BudgetCard from '../../components/BudgetCard.component';
-import { Container, Header, Content, Footer, FooterTab, Button } from 'native-base';
+import BudgetCard from '../../components/BudgetCard/BudgetCard.component';
+import { Text, Container, Header, Content, Footer, FooterTab, Button } from 'native-base';
 import styles from './Home.style'
-import BudgetListContainer from '../../containers/storage/budget/BudgetListContainer';
+import BudgetListContainer from '../../components/BudgetList/BudgetListContainer';
+
+import { connect } from 'react-redux'
+import { getList } from '../../redux/actions'
 
 class Home extends Component {
     static navigationOptions = {
@@ -21,17 +24,16 @@ class Home extends Component {
         },
     };
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             budgetList: [],
+            teste:""
         }
     }
 
     componentDidMount() {
-        
-    
-
+        //this.props.getList(this.state.teste);        
     }
 
     componentWillUnmount() {
@@ -41,10 +43,6 @@ class Home extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
-
-        
-
-
         return (
             <Container>
                 <Grid style={{ width: '100%' }}>
@@ -57,10 +55,14 @@ class Home extends Component {
                             </Row>
                         </Grid>
                     </Row>
+                    <Text>{this.state.teste}</Text>
                     <Row size={2}>
                         <ScrollView style={styles.budgetCardsScrollView}>
                             <View style={styles.BudgetListContainer}>
-                                <BudgetListContainer />
+                                    {this.props.teste.map(budget =>{
+                                        console.log("é",budget);
+                                        <BudgetCard value={budget.amount} description={budget.nome}></BudgetCard>
+                                    })}
                             </View>
                         </ScrollView>
                     </Row>
@@ -88,7 +90,22 @@ class Home extends Component {
     }
 }
 
-export default withNavigationFocus(Home);
+
+/*const mapStateToProps = state => {
+      teste: JSON.stringify(state)
+  }*/
+
+  /*const mapDispatchToProps = (dispatch)=> {
+  return {
+    getList: () => dispatch(getList())
+  };
+}*/
+  
+  //const mapDispatchToProps = {getList}
+  
+  export default connect(
+    state => ({teste: state}))(Home)
+
 
 
 const budgetsList = [
