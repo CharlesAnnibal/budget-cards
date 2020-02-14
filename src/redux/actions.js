@@ -2,7 +2,6 @@
 
 import { GET_LIST, ADD_TODO, TOGGLE_TODO, SET_FILTER } from "./actionTypes";
 
-let nextTodoId = 0
 export const getList = content => ({
   type: GET_LIST,
   payload: {
@@ -10,3 +9,13 @@ export const getList = content => ({
     other:"eeeee"
   }
 })
+
+export const addTodo = content => {
+  return {
+    type: ADD_TODO,
+    payload: {
+      content:content+" tesstingueee",
+      other:"eeee33333e"
+    }
+  }
+}

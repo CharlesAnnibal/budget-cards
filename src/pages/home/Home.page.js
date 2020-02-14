@@ -10,7 +10,7 @@ import styles from './Home.style'
 import BudgetListContainer from '../../components/BudgetList/BudgetListContainer';
 
 import { connect } from 'react-redux'
-import { getList } from '../../redux/actions'
+import { getList, addTodo } from '../../redux/actions'
 
 class Home extends Component {
     static navigationOptions = {
@@ -28,12 +28,13 @@ class Home extends Component {
         super(props);
         this.state = {
             budgetList: [],
-            teste:""
+            teste:"",
+            titulo:"tituolodlow dlow"
         }
     }
 
     componentDidMount() {
-        //this.props.getList(this.state.teste);        
+        this.props.getList(this.state.teste);        
     }
 
     componentWillUnmount() {
@@ -55,14 +56,10 @@ class Home extends Component {
                             </Row>
                         </Grid>
                     </Row>
-                    <Text>{this.state.teste}</Text>
                     <Row size={2}>
                         <ScrollView style={styles.budgetCardsScrollView}>
                             <View style={styles.BudgetListContainer}>
-                                    {this.props.teste.map(budget =>{
-                                        console.log("é",budget);
-                                        <BudgetCard value={budget.amount} description={budget.nome}></BudgetCard>
-                                    })}
+                                   
                             </View>
                         </ScrollView>
                     </Row>
@@ -80,7 +77,7 @@ class Home extends Component {
                         ><Text style={styles.footerText}>New Objective</Text></Button>
                         <Button
                             title="Go to Jane's profile"
-                            onPress={() => navigate('NewBudget', { name: 'Jane' })}
+                            onPress={() => { this.props.addTodo(this.props.titulo) } }
                         ><Text style={styles.footerText}>About</Text></Button>
                     </FooterTab>
                 </Footer>
@@ -91,20 +88,22 @@ class Home extends Component {
 }
 
 
-/*const mapStateToProps = state => {
-      teste: JSON.stringify(state)
-  }*/
+const mapStateToProps = state => {
+    return {
+        teste: state
+    }
+  }
 
-  /*const mapDispatchToProps = (dispatch)=> {
-  return {
-    getList: () => dispatch(getList())
-  };
-}*/
+  const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        getList,
+        addTodo: ()=> dispatch(addTodo(ownProps))
+    }
+  }
   
   //const mapDispatchToProps = {getList}
   
-  export default connect(
-    state => ({teste: state}))(Home)
+  export default connect(mapStateToProps, mapDispatchToProps)(Home)
 
 
 

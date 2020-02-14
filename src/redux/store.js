@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import logger from 'redux-logger';
 import rootReducer from "./reducers/root.reducer";
-//import BudgetReducer from  "./reducers/Budget.reducer"
+import BudgetReducer from  "./reducers/Budget.reducer"
 
 const middlewares = [logger];
 
@@ -22,5 +22,5 @@ function reducerTeste(){
      
     ]
 }
-const store = createStore(reducerTeste);
+const store = createStore(rootReducer);
 export default store;
