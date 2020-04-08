@@ -1,11 +1,7 @@
-import { createStore, applyMiddleware } from "redux";
-import logger from 'redux-logger';
+import { createStore } from "redux";
 import rootReducer from "./reducers/root.reducer";
-import BudgetReducer from  "./reducers/Budget.reducer"
 
-const middlewares = [logger];
-
-function reducerTeste(){
+/*function reducerTeste(){
     return [
             {
                 nome:"teste1",
@@ -21,6 +17,6 @@ function reducerTeste(){
             },
      
     ]
-}
+}*/
 const store = createStore(rootReducer);
 export default store;

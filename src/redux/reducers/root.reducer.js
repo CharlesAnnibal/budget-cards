@@ -13,4 +13,4 @@ function reducerTeste(){
     ]
 }
 
-export default combineReducers({budgetReducer});
+export default combineReducers({budgets: budgetReducer});
