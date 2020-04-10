@@ -7,39 +7,45 @@ export let styles = StyleSheet.create({
     width: '47%',
     marginHorizontal: '1.5%',
     marginVertical: '3%',
-    height: 80,
-    alignItems: 'center',
+    height: 90,
     borderTopLeftRadius: 15,
-    borderTopRightRadius: 5,
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-    borderWidth: 0.5,
-    borderColor: '#777',
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    elevation:2,
+
+  },
+  flexbox:{
+    display:'flex',
+    height:90,
+    width:'100%',
+    flexDirection:'column',
+    justifyContent: 'flex-start',
+    alignItems:'flex-start',
+    textAlign:'left'
   },
   colorIdentifierRow: {
-    backgroundColor: 'blue',
-    width: '100%'
+    flexDirection:'row',
+    flex:1
   },
+  textRow:{
+    display:'flex',
+    flexDirection:'row', 
+    flex:1,
+  },  
   progressBarRow: {
-    justifyContent: 'center',
+    flex:1,
+    justifyContent:'center',
+    width:'100%',
+    paddingHorizontal:'10%'
   },
-  overviewCenter: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  grid: {
-    width: '95%',
-    height: '100%',
-    alignItems: 'flex-start',
-    borderRadius: 5,
-    paddingBottom: 30,
-  },
+ 
   text: {
-    fontSize: 14,
-    justifyContent: 'center',
-    textAlignVertical: 'center',
-    textAlign: 'center',
-    color: '#555',
+    flex:1,
+    textAlign:'center',
+    fontSize: 16,
+    color: '#001489',
+    paddingHorizontal:'5%'
     /*textShadowColor: '#000',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 3*/
@@ -48,14 +54,16 @@ export let styles = StyleSheet.create({
 
 
 export function identifier(color) {
+  console.log("VEIO COR?",color)
   let styles = {
-    marginTop:5,
     backgroundColor: color,
     width: '20%',
+    height:'80%',
+    borderColor:'yellow',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 3,
     borderBottomLeftRadius: 3,
-    borderBottomRightRadius: 3
+    borderBottomRightRadius: 15
   }
   return styles;
 }

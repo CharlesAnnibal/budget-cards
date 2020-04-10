@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Container, Content, Form, Item, Input, Button, Text, Icon } from 'native-base';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import * as BudgetStorage from "../../containers/storage/budget/BudgetStorage";
-import { StyleSheet } from 'react-native'
+import { Container, Content, Form, Item, Input, Button, Text } from 'native-base';
 import Reactotron from 'reactotron-react-native'
 import DatePicker from '../../globalComponents/DatePicker';
 import { RealmConnection } from '../../services/realm'
 import { useDispatch } from 'react-redux'
 import {receiveAllBudgets } from '../../redux/actions'
-import { max } from 'react-native-reanimated';
 
 const NewBudget = ({navigation}) => {
     const [amount, setAmount] = useState('');
