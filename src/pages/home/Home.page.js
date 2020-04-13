@@ -5,6 +5,7 @@ import CardOverview from './components/CardOverview';
 import { Text, Container, Footer, FooterTab, Button } from 'native-base';
 import styles from './Home.style'
 import BudgetList from '../../globalComponents/BudgetList/BudgetList';
+import ContextMenu from '../../globalComponents/ContextMenu';
 
 const Home = (props) =>{
     const { navigate } = props.navigation;
@@ -28,7 +29,7 @@ const Home = (props) =>{
                         </ScrollView>
                     </Row>
                 </Grid>
-
+                <ContextMenu />
                 <Footer>
                     <FooterTab style={styles.footer} >
                         <Button

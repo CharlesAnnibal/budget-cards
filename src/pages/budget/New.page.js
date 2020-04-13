@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import { Container, Content, Form, Item, Input, Button, Text } from 'native-base';
 import Reactotron from 'reactotron-react-native'
 import DatePicker from '../../globalComponents/DatePicker';
 import { RealmConnection } from '../../services/realm'
 import { useDispatch } from 'react-redux'
-import {receiveAllBudgets } from '../../redux/actions'
+import {getAllBudgets } from '../../redux/actions'
 
 const NewBudget = ({navigation}) => {
     const [amount, setAmount] = useState('');
@@ -13,7 +12,6 @@ const NewBudget = ({navigation}) => {
     const [color, setColor] = useState('');
     const [dateStart, setDateStart] = useState('');
     const [dateEnd, setDateEnd] = useState('');
-
 
     const dispatch = useDispatch();
 
@@ -36,8 +34,7 @@ const NewBudget = ({navigation}) => {
                 Reactotron.log("CRIANDO BUDGET", data)
                 realm.create('Budget', data);
             });
-
-            dispatch(receiveAllBudgets(realm.objects('Budget')))
+            dispatch(getAllBudgets(realm.objects('Budget')))
             realm.close();
         });
     }

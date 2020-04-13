@@ -1,54 +1,18 @@
-import { BudgetStorage } from "../../containers/storage/budget/BudgetStorage"
-import { REQUEST_ALL_BUDGETS, RECEIVE_ALL_BUDGETS, GET_BUDGETS, GET_LIST, ADD_TODO, TOGGLE_TODO } from "../actionTypes";
 
 const initialState = {
-  budgets: []
+  budgetList: []
 }
 
 const budgetReducer = (state = initialState, action) => {
-
-  let teste = []
+  console.log("Chamou o budget reducer",action)
+  console.log("action wuando chamou o budget:",state)
   switch (action.type) {
-    case GET_LIST:
-      teste = [
-        {
-          nome: "teste1",
-          "amount": "100777"
-        },
-        {
-          nome: "teste2",
-          "amount": "100"
-        },
-        {
-          nome: "teste3",
-          "amount": "100"
-        },
-      ]
-      return teste;
+    case "GET_ALL_BUDGETS":
+      console.log("novo state:",Object.assign({}, state, {budgetList:action.payload.budgets}))
+      return  Object.assign({}, state, {budgetList:action.payload.budgets})
 
-    case REQUEST_ALL_BUDGETS:
-      budgets = []
-      return budgets;
-
-    case RECEIVE_ALL_BUDGETS:
-      budgets = action.payload.budgets
-      return budgets
     default:
-      teste = [
-        {
-          nome: "defalut",
-          "amount": "888"
-        },
-        {
-          nome: "teste2",
-          "amount": "100"
-        },
-        {
-          nome: "teste3",
-          "amount": "100"
-        },
-      ]
-      return teste
+      return state
   }
 }
 

@@ -54,7 +54,6 @@ export let styles = StyleSheet.create({
 
 
 export function identifier(color) {
-  console.log("VEIO COR?",color)
   let styles = {
     backgroundColor: color,
     width: '20%',

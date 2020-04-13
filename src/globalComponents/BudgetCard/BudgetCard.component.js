@@ -1,52 +1,53 @@
-import React, { Component } from 'react';
-import {View, Text, TouchableHighlight, Alert, StyleSheet } from 'react-native'
-import { Grid, Row, Col } from 'react-native-easy-grid'
+import React, { useState } from 'react';
+import { View, Text, TouchableHighlight } from 'react-native'
 import * as Progress from 'react-native-progress';
-import {styles, identifier} from './BudgetCard.style'
+import { styles, identifier } from './BudgetCard.style';
+import { useDispatch, useSelector } from 'react-redux';
+import { showMenu, hideMenu } from "../../redux/actions";
+
+const BudgetCard = (props) => {
+  const [id, setId] = useState(props.id);
+  const [amount, setAmout] = useState(50);
+  const [description, setDescription] = useState(props.description);
+  const [valueUtilized, setValueUtilized] = useState(0.3);
+  //const [styles, setStyles] = useState(styles);
+  const [colorIdentifier, setColorIdentifier] = useState(identifier(props.color));
 
 
-export default class BudgetCard extends Component {
-  constructor(props) {
-    super(props);
+  const dispatch = useDispatch();
+  const currentstate = useSelector(state => state.contextMenu);
+  console.log("ue", currentstate)
+  const budgets = useSelector(state => state.budgets);
+    console.log("using selector budgets:::",budgets)
 
-    this.state = {
-      amount:50,
-      description: props.description,
-      valueUtilized: 0.3,
-      styles: styles,
-      colorIdentifier:identifier(props.color)
-    }
+  const _onPressButton = () => {
+    
+    dispatch(showMenu(id));
+    //useDispatch(hideMenu(id));
 
-    this._onPressButton = this._onPressButton.bind(this);
+    //this.props.navigate.navigate('NewExpense')
+    //this.menuRef.current.toggleMenu()
+    //this.state.showingMenu ? this.setState({ showingMenu: false }) : this.setState({ showingMenu: true })
   }
 
-  
-
-  _onPressButton() {
-    this.props.navigate.navigate('NewExpense')
-  }
-
-  render() {
-    console.log(this.state.colorIdentifier)
-    return (
-      <TouchableHighlight onPress={() => this._onPressButton()} style={this.state.styles.card}>
-        <View style={this.state.styles.flexbox}>
-            <View style={this.state.styles.colorIdentifierRow}>
-              <View style={this.state.colorIdentifier}></View>
-            </View>
-            <View style={this.state.styles.textRow}>
-              <Text style={this.state.styles.text}>{this.state.description}</Text>
-              <Text style={this.state.styles.text}>{this.state.amount}</Text>
-            </View>
-            
-            <View style={this.state.styles.progressBarRow}>
-              <Progress.Bar style={{marginTop:'4.5%'}} progress={this.state.valueUtilized} height={10} width={160}/>
-            </View>
+  return (
+    <TouchableHighlight onPress={() => _onPressButton()} style={styles.card}>
+      <View style={styles.flexbox}>
+        <View style={styles.colorIdentifierRow}>
+          <View style={colorIdentifier}></View>
         </View>
-          
-      </TouchableHighlight>
-    );
-  }
+        <View style={styles.textRow}>
+          <Text style={styles.text}>{description}</Text>
+          <Text style={styles.text}>{amount}</Text>
+        </View>
+        <View style={styles.progressBarRow}>
+          <Progress.Bar style={{ marginTop: '4.5%', width: '100%' }} progress={valueUtilized} height={10} />
+        </View>
+      </View>
+    </TouchableHighlight>
+  );
+
 }
 
+export default BudgetCard;
 

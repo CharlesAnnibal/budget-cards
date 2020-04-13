@@ -1,30 +1,24 @@
-
-
-import { REQUEST_ALL_BUDGETS, RECEIVE_ALL_BUDGETS, GET_BUDGETS, ADD_TODO, TOGGLE_TODO, SET_FILTER } from "./actionTypes";
-
-export const requestAllBudgets = () => {
-  console.log("dispatched action","request all budgets")
+export const getAllBudgets = (content) =>{
+  console.log("acton getAllBudgets  ", content)
   return{
-    type: REQUEST_ALL_BUDGETS
-  }
-}
-
-export const receiveAllBudgets = (content) => {
-  console.log("dispatched action receive all budgets");
-  return {
-    type: RECEIVE_ALL_BUDGETS,
-    payload: {
-      budgets: content
+    type:"GET_ALL_BUDGETS",
+    payload:{
+      budgets:content
     }
   }
 }
 
-  export const addTodo = content => {
-    return {
-      type: ADD_TODO,
-      payload: {
-        content: content + " tesstingueee",
-        other: "eeee33333e"
-      }
+export const showMenu = (id) =>{
+  return{
+    type:"SHOW_MENU",
+    payload:{
+      budgetId:id
     }
   }
+}
+
+export const hideMenu = (clickedCard) =>{
+  return{
+    type:"HIDE_MENU"
+  }
+}
