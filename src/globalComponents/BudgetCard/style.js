@@ -7,7 +7,7 @@ export let styles = StyleSheet.create({
     width: '47%',
     marginHorizontal: '1.5%',
     marginVertical: '3%',
-    height: 90,
+    height: 70,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
@@ -17,7 +17,7 @@ export let styles = StyleSheet.create({
   },
   flexbox:{
     display:'flex',
-    height:90,
+    height:60,
     width:'100%',
     flexDirection:'column',
     justifyContent: 'flex-start',

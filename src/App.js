@@ -7,7 +7,7 @@ import { MenuProvider } from 'react-native-popup-menu';
 import { createStackNavigator } from '@react-navigation/stack';
 import store from "./redux/store";
 import 'react-native-gesture-handler';
-import HomeScreen from './pages/home/Home.page';
+import HomeScreen from './pages/home/index';
 import NewBudget from './pages/budget/New.page';
 import EditBudget from './pages/budget/Edit.page';
 import NewExpense from './pages/expense/New.page';

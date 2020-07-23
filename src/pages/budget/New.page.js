@@ -4,7 +4,7 @@ import Reactotron from 'reactotron-react-native'
 import DatePicker from '../../globalComponents/DatePicker';
 import { RealmConnection } from '../../services/realm'
 import { useDispatch } from 'react-redux'
-import {getAllBudgets } from '../../redux/actions'
+
 
 const NewBudget = ({navigation}) => {
     const [amount, setAmount] = useState('');
@@ -34,7 +34,6 @@ const NewBudget = ({navigation}) => {
                 Reactotron.log("CRIANDO BUDGET", data)
                 realm.create('Budget', data);
             });
-            dispatch(getAllBudgets(realm.objects('Budget')))
             realm.close();
         });
     }
