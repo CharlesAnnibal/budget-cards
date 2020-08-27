@@ -43,6 +43,7 @@ class Home extends Component {
     }
 
     render() {
+        console.log("home render",this.props)
         const { navigate } = this.props.navigation;
         return (
             <TouchableWithoutFeedback onPress={() => this.pressOnAnyWhere()}>
@@ -61,7 +62,7 @@ class Home extends Component {
                         <Row size={2}>
                             <ScrollView style={styles.budgetCardsScrollView}>
                                 <View style={styles.BudgetListContainer}>
-                                    <BudgetList />
+                                    <BudgetList navigation={navigate}/>
                                 </View>
                             </ScrollView>
                         </Row>

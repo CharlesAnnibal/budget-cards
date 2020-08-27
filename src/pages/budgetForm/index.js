@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import BudgetForm from './BudgetForm.page';
-import { getAllBudgets } from "../../redux/ducks/budgets";
-import {hideMenu} from  "../../redux/ducks/contextMenu";
+import { getAllBudgets, createBudget } from "../../redux/ducks/budgets";
+//import {hideMenu} from  "../../redux/ducks/contextMenu";
 
 
 const mapStateToProps = state => {
@@ -9,7 +9,7 @@ const mapStateToProps = state => {
     return { budgets }
 }
 
-const mapDispatchToProps = { getAllBudgets, hideMenu };
+const mapDispatchToProps = { getAllBudgets, createBudget };
 
 export default connect(
     mapStateToProps,

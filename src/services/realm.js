@@ -4,17 +4,7 @@ import BudgetSchema from '../schemas/BudgetSchema';
 
 export const teste = BudgetSchema;
 
-export const RealmConnection = async ()=>{
-    let openConnection = Realm.open({
-        schema:[
-            BudgetSchema
-        ]
-    })
-    console.log("REALM CONNECTION:", openConnection)
-    return openConnection;
-}
-
-export const RealmConnection2 = ()=>{
+export const RealmConnection = ()=>{
     let openConnection = Realm.open({
         schema:[
             BudgetSchema

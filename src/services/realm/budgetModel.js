@@ -6,3 +6,11 @@ export const getBudgets = (realmConnection)=>{
         return budgets;
     });
 }
+
+export const create = (realmConnection, budgetObject)=>{
+    return realmConnection.then(realm =>{
+        realm.write(() => {
+            realm.create('Budget', budgetObject);
+        });
+    })
+}

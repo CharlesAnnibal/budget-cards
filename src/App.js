@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import store from "./redux/store";
 import 'react-native-gesture-handler';
 import HomeScreen from './pages/home/index';
+import BudgetForm from './pages/budgetForm/index'
 import NewBudget from './pages/budget/New.page';
 import EditBudget from './pages/budget/Edit.page';
 import NewExpense from './pages/expense/New.page';
@@ -35,8 +36,8 @@ export default function App() {
                 <MenuProvider>
                     <Stack.Navigator initialRouteName="Home">
                         <Stack.Screen name="Home" component={HomeScreen} options={headerStyle} />
-                        <Stack.Screen name="Budget/new" component={NewBudget} options={headerStyle} />
-                        <Stack.Screen name="Budget/edit" component={EditBudget} options={headerStyle} />
+                        <Stack.Screen name="Budget/new" component={BudgetForm} options={headerStyle} />
+                        <Stack.Screen name="Budget/edit" component={BudgetForm} options={headerStyle} />
                         <Stack.Screen name="Expense/new" component={NewExpense} options={headerStyle} />
                     </Stack.Navigator>
                 </MenuProvider>

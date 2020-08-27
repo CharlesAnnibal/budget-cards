@@ -1,9 +1,10 @@
-import { getAllBudgets } from "../../ducks/budgets";
-import {showMenu, hideMenu} from "../../ducks/contextMenu";
-import budgetReducer from "../budgets"
+
 
 describe("budget reducer", () => {
-    const initialState = {
+    it("teste 1", ()=>{
+        expect(1 + 2).toBe(3);
+    })
+    /*const initialState = {
         list: []
     }
 
@@ -44,5 +45,5 @@ describe("budget reducer", () => {
                 }
             ,
         })
-    })
+    })*/
 })

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableHighlight } from 'react-native'
 import * as Progress from 'react-native-progress';
 import { styles, identifier } from './style';
+import {ProgressBar} from './styled';
 
 export default class BudgetCard extends Component {
     constructor(props) {
@@ -17,14 +18,15 @@ export default class BudgetCard extends Component {
     }
 
     pressButton(event) {
-        console.log(event.nativeEvent.pageX)
-        this.props.showMenu(
+        console.log("xererere",event.nativeEvent.pageX)
+        this.props.onPressCallback(this.props.budget)
+        /*this.props.showMenu(
             {
                 id: this.props.id,
                 positionX: event.nativeEvent.pageX,
                 positionY: event.nativeEvent.pageY
             }
-        )
+        )*/
     }
 
     render() {
@@ -44,7 +46,10 @@ export default class BudgetCard extends Component {
                         <Text style={styles.text}>{this.props.amount}</Text>
                     </View>
                     <View style={styles.progressBarRow}>
-                        <Progress.Bar style={{ marginTop: '4.5%', width: '100%' }} progress={this.props.valueUtilized} height={10} />
+                        <Progress.Bar style={{ marginTop: '4.5%', width: '100%' }} progress={this.props.valueUtilized} height={6} />
+                    </View>
+                    <View>
+                        <ProgressBar></ProgressBar>
                     </View>
                 </View>
             </TouchableHighlight>
